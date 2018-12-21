@@ -16,21 +16,21 @@ feature 'the signup process' do
 end
 
 feature 'logging in' do
-  given(:hello_world) { FactoryBot.create(:user_hw) }
+  let!(:user) { create(:user) }
   scenario 'shows username on the homepage after login' do
-    login_as(hello_world)
+    login_as(user)
     expect(page).to have_content("hello_world")
   end
 end
 
 feature 'logging out' do
-  given(:hello_world) { FactoryBot.create(:user_hw)}
+  let!(:user) { create(:user)}
   scenario 'begins with a logged out state' do
     visit root_url
     expect(page).to have_content("Sign in")
   end
   scenario 'doesn\'t show username on the homepage after logout' do
-    login_as(hello_world)
+    login_as(user)
     click_button("Log out")
     expect(page).to_not have_content("hello_world")
   end

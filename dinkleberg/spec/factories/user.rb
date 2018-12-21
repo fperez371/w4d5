@@ -5,7 +5,7 @@ FactoryBot.define do
   end
 
   factory :user_hw do
-    username { "hello_world"}
+    username { "hello_world" }
   end
-  
+
 end
